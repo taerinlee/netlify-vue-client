@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
   export default {
     data(){
     return {
@@ -34,8 +36,11 @@
   },
   methods: {
    addPost(){
-    console.log(this.post);
-   }
+        let uri = '//localhost:4000/posts/add';
+        axios.post(uri, this.post).then(() => {
+          this.$router.push({name: 'posts'});
+        });
+    }
   }
  }
 </script>
