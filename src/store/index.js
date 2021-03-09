@@ -11,7 +11,7 @@ export default new Vuex.Store({
   },
   actions: {
     posts () {
-      return http.get('/posts').then(response => {
+      return http.get('/.netlify/functions/server').then(response => {
         return response.data;
       });
     }
