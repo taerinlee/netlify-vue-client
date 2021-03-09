@@ -36,10 +36,15 @@ import axios from 'axios'
   },
   methods: {
    addPost(){
-        let uri = '//localhost:4000/posts/add';
-        axios.post(uri, this.post).then(() => {
-          this.$router.push({name: 'posts'});
-        });
+      let uri = '//localhost:4000/posts/add';
+      axios.post(uri, this.post).then(() => {
+        this.$router.push({name: 'posts'});
+      });
+    },
+    updatePost() {
+     this.$store.dispatch('addPost', {params: this.post}).then(() => {
+      this.$router.push({name: 'posts'});
+     });
     }
   }
  }

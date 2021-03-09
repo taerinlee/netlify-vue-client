@@ -26,8 +26,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
   export default {
 
    data() {
@@ -36,15 +34,13 @@ import axios from 'axios'
     }
    },
    created() {
-    let uri = `//localhost:4000/posts/edit/${this.$route.params.id}`;
-    axios.get(uri).then((response) => {
-      this.post = response.data;
+    this.$store.dispatch('getPost', this.$route.params.id).then(response => {
+      this.post = response;
     });
    },
    methods: {
     updatePost() {
-     let uri = `//localhost:4000/posts/update/${this.$route.params.id}`;
-     axios.post(uri, this.post).then(() => {
+     this.$store.dispatch('updatePost', { id: this.$route.params.id, params: this.post}).then(() => {
       this.$router.push({name: 'posts'});
      });
     }

@@ -29,8 +29,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
  export default {
    data() {
     return {
@@ -38,17 +36,13 @@ import axios from 'axios'
     }
    },
    created() {
-   this.$store.dispatch('posts').then(response => {
-     console.log('response', response);
-     this.posts = response;
-   });
+    this.$store.dispatch('getPosts').then(response => {
+      this.posts = response;
+    });
   },
   methods: {
-   deletePost(id)
-   {
-    let uri = `//localhost:4000/posts/delete/${id}`;
-    axios.delete(uri).then(response => {
-      console.log(response);
+   deletePost(id) {
+    this.$store.dispatch('deletePost', id).then(() => {
       this.posts.splice(this.posts.indexOf(id), 1);
     });
    }
