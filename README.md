@@ -1,4 +1,4 @@
-# mevn-project
+# vue-client
 
 ## Project setup
 ```
