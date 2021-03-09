@@ -38,9 +38,9 @@ import axios from 'axios'
     }
    },
    created() {
-   let uri = '//localhost:4000/posts';
-   axios.get(uri).then(response => {
-    this.posts = response.data;
+   this.$store.dispatch('posts').then(response => {
+     console.log('response', response);
+     this.posts = response;
    });
   },
   methods: {
